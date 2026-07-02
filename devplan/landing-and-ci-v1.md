@@ -87,15 +87,12 @@ Built from `landing.md`. Single file, inlined CSS + tiny JS. Structure:
 
 ## Status — 2026-07-03
 
-- **DONE** M0 scaffolding, M1 CI, M2 landing page, M3 deploy.
-- Live on the default Pages URL: **https://cutlr.github.io/cutlr-xyz/** (green run).
+- **DONE** M0 scaffolding, M1 CI, M2 landing page, M3 deploy, **v1.1 marketer pass**.
+- **LIVE on https://cutlr.xyz** (apex custom domain, HTTPS enforced, green run).
 - **Aesthetic:** Cold Steel · system font stacks (zero external deps).
-- **PENDING — apex domain `cutlr.xyz`:** deferred on purpose. The custom domain
-  blocked the first deploy while the domain had no DNS. Order to finish it:
-  1. Set DNS A records (185.199.108–111.153) + optional AAAA; `www` CNAME → `cutlr.github.io`.
-  2. Once DNS resolves, re-add `public/CNAME` = `cutlr.xyz` (git revert of the removal
-     commit) OR `gh api --method PUT /repos/cutlr/cutlr-xyz/pages -f cname=cutlr.xyz`,
-     then enable "Enforce HTTPS".
+- **Domain — RESOLVED:** DNS on Route 53 (apex A ×4 + `www` CNAME). The blocker was
+  a typo in GitHub's custom-domain field (`cutrl.xyz`), not the DNS; fixed to
+  `cutlr.xyz`, cert provisioned (`approved`), HTTPS enforced.
 
 ---
 
@@ -123,6 +120,21 @@ as *flavor*, not as the message.
 - **No hard-coded tool count** anywhere ("Six straight tools" → generic) so adding/removing tools needs no copy edit.
 - **No open-source / MIT / MCP in the hero** — audience is mainstream Evernote/Calendly refugees. Those signals live in manifesto/footer only. De-jargon the suite cards (drop "native MCP" wording).
 - Hero CTAs: primary "Explore the suite →", secondary "Honest pricing →" (GitHub demoted to header/footer).
+
+## Revision v1.2 — header conversion + www canonical (2026-07-03)
+
+**Feedback:** the single-app browser mock (only `notes`) is wrong for the hero →
+removed. GitHub out of the header entirely. Header must carry the real actions:
+**Log in** + **Start for free**. The hero may list every tool, but **by what it
+does, not by product name**. Canonical domain → **www.cutlr.xyz**, apex 301 → www.
+
+- [x] Header: remove GitHub (text link + icon). Add "Log in" + "Start for free" (primary btn).
+- [x] Hero: drop the browser mock. CTAs → "Start for free" (primary) + "Explore the suite".
+- [x] Hero suite strip by **function, not name**: 📝 Write notes · 📋 Track to-dos ·
+      ⏱ Log time · 📅 Find a time · 🎟 Host events · 📌 Save links.
+- [x] Auth links → placeholders `https://www.cutlr.xyz/{login,signup}` — **repoint when auth exists.**
+- [x] Domain: `public/CNAME` + Pages cname → `www.cutlr.xyz`; apex A records already set →
+      GitHub 301s apex→www. `og:url` + canonical → www.
 
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
