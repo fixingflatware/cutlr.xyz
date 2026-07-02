@@ -88,7 +88,7 @@ Built from `landing.md`. Single file, inlined CSS + tiny JS. Structure:
 ## Status — 2026-07-03
 
 - **DONE** M0 scaffolding, M1 CI, M2 landing page, M3 deploy, **v1.1 marketer pass**.
-- **LIVE on https://cutlr.xyz** (apex custom domain, HTTPS enforced, green run).
+- **LIVE on https://www.cutlr.xyz** (canonical, HTTPS enforced); naked `cutlr.xyz` 301→www.
 - **Aesthetic:** Cold Steel · system font stacks (zero external deps).
 - **Domain — RESOLVED:** DNS on Route 53 (apex A ×4 + `www` CNAME). The blocker was
   a typo in GitHub's custom-domain field (`cutrl.xyz`), not the DNS; fixed to
@@ -135,6 +135,18 @@ does, not by product name**. Canonical domain → **www.cutlr.xyz**, apex 301 �
 - [x] Auth links → placeholders `https://www.cutlr.xyz/{login,signup}` — **repoint when auth exists.**
 - [x] Domain: `public/CNAME` + Pages cname → `www.cutlr.xyz`; apex A records already set →
       GitHub 301s apex→www. `og:url` + canonical → www.
+
+## Revision v1.3 — toggle relocation + full marketing pass (2026-07-03)
+
+- [x] **Theme toggle → footer** (foot-bottom). Header stays clean for conversion
+      (brand · nav · Log in · Start for free). Page already auto-respects the OS
+      theme, so the manual toggle is just an override → belongs out of the way. `T` shortcut kept.
+- [x] **Comparison "bloat tax"** section (between Suite & Pricing): the usual
+      separate-app stack (~$44/mo, by function not brand) vs CUTLR **$2.99/mo**, with CTA.
+- [x] **Trust line** under pricing: data is yours · export anytime · no contracts · cancel in one click.
+- [x] **FAQ** (native `<details>`, no JS): install? · import/export · cancel-anytime ·
+      data if you leave · why so cheap.
+- [x] **Closing CTA** band + **honest** building-in-public line (real GitHub link, no fake numbers/testimonials).
 
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
