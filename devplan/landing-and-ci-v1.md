@@ -83,6 +83,47 @@ Built from `landing.md`. Single file, inlined CSS + tiny JS. Structure:
 
 ---
 
+---
+
+## Status — 2026-07-03
+
+- **DONE** M0 scaffolding, M1 CI, M2 landing page, M3 deploy.
+- Live on the default Pages URL: **https://cutlr.github.io/cutlr-xyz/** (green run).
+- **Aesthetic:** Cold Steel · system font stacks (zero external deps).
+- **PENDING — apex domain `cutlr.xyz`:** deferred on purpose. The custom domain
+  blocked the first deploy while the domain had no DNS. Order to finish it:
+  1. Set DNS A records (185.199.108–111.153) + optional AAAA; `www` CNAME → `cutlr.github.io`.
+  2. Once DNS resolves, re-add `public/CNAME` = `cutlr.xyz` (git revert of the removal
+     commit) OR `gh api --method PUT /repos/cutlr/cutlr-xyz/pages -f cname=cutlr.xyz`,
+     then enable "Enforce HTTPS".
+
+---
+
+## Revision v1.1 — de-nerd the hero (2026-07-03)
+
+**Feedback:** the hero reads *too* technical. The fake terminal
+`$ npx cutlr add notes tasks track` signals "install CLI software on your
+machine" and pushes away non-technical users. First impression must say
+"ready-to-use web apps — open a link and go", with the hacker styling kept only
+as *flavor*, not as the message.
+
+- [ ] **Replace the hero terminal** with a friendlier visual (per chosen direction).
+- [ ] **Rewrite the lede** to lead with the hosted/no-install promise: name the
+      everyday apps, "open a link, sign in once, it just works — nothing to install".
+      Demote MIT / MCP / self-hosted to a secondary "for the technical" line.
+- [ ] **CTAs:** primary "Open the suite →" (welcoming); "Source on GitHub" demoted.
+- [ ] Keep headline + "we're cutlers" chip; keep Cold Steel look but dial the
+      terminal motif down to a light accent.
+- [ ] Everything below the hero stays; this revision is hero-only.
+
+**Final decisions (all confirmed):**
+- Hero visual = **browser-window mock** (address bar `notes.cutlr.xyz` + mini note) → "it's a website, open and use".
+- Language stays **English**.
+- Rename tool **bookmarks → `pins`** (📌 `pins.cutlr.xyz`, "Pin a link, tag it, find it again") everywhere (suite card + footer).
+- **No hard-coded tool count** anywhere ("Six straight tools" → generic) so adding/removing tools needs no copy edit.
+- **No open-source / MIT / MCP in the hero** — audience is mainstream Evernote/Calendly refugees. Those signals live in manifesto/footer only. De-jargon the suite cards (drop "native MCP" wording).
+- Hero CTAs: primary "Explore the suite →", secondary "Honest pricing →" (GitHub demoted to header/footer).
+
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
 artwork beyond a simple inline SVG. Flag if you want any pulled in.

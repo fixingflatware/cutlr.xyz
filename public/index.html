@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CUTLR — lightweight, un-twisted tools. Keep it straight.</title>
-<meta name="description" content="CUTLR is a growing suite of lightweight, open-source, MCP-native alternatives to bloated SaaS. MIT licensed. One account, every tool. $2.99/mo — no lock-in.">
+<meta name="description" content="CUTLR is a growing suite of simple, honestly-priced everyday apps — notes, scheduling, to-dos, time, events, saved links. One login, every tool, $2.99/mo. No lock-in.">
 <meta name="theme-color" content="#0B0D0E" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="CUTLR — Keep it straight.">
-<meta property="og:description" content="Lightweight, open-source, MCP-native alternatives to bloated SaaS. One account, every tool. $2.99/mo, no lock-in.">
+<meta property="og:description" content="The simple everyday apps you already use — minus the bloat and the ballooning bills. One login, every tool, $2.99/mo. No lock-in.">
 <meta property="og:url" content="https://cutlr.xyz">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0D0E'/%3E%3Cg stroke='%235CC8E6' stroke-width='2.2' stroke-linecap='round' fill='none'%3E%3Cpath d='M11 7v7M9 7v4M13 7v4M11 14v11'/%3E%3Cpath d='M20 7c-2 0-2 6-2 8s2 2 2 2 2 0 2-2-0-8-2-8zM20 19v6'/%3E%3C/g%3E%3C/svg%3E">
@@ -169,20 +169,26 @@
   .btn.primary:hover { filter: brightness(1.08); }
   .btn svg { width: 16px; height: 16px; }
 
-  /* Terminal */
-  .term {
+  .cta-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin: 16px 0 0; }
+  .cta-note b { color: var(--accent); font-weight: 600; }
+
+  /* Browser-window mock — says "it's a website, just open it" */
+  .win {
     margin-top: 44px;
     border: 1px solid var(--border); border-radius: 10px;
     background: var(--surface); box-shadow: var(--shadow);
-    overflow: hidden; max-width: 640px;
+    overflow: hidden; max-width: 560px;
   }
-  .term-bar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; border-bottom: 1px solid var(--border); }
-  .term-bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--border-2); display: inline-block; }
-  .term-bar span { margin-left: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--faint); }
-  .term-body { padding: 16px 18px; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.85; overflow-x: auto; }
-  .term-body .p { color: var(--accent); }
-  .term-body .dim { color: var(--faint); }
-  .term-body .ok { color: var(--pos); }
+  .win-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+  .win-bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--border-2); display: inline-block; flex: none; }
+  .win-bar .addr { margin-left: 8px; flex: 1; display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; }
+  .win-bar .addr svg { width: 12px; height: 12px; color: var(--pos); flex: none; }
+  .win-body { padding: 20px 22px; }
+  .win-body .note-title { font-family: var(--font-mono); font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+  .win-body .note-line { font-size: 15px; color: var(--text); padding: 5px 0; }
+  .win-body .note-line.done { color: var(--faint); text-decoration: line-through; }
+  .win-body .note-line .mk { color: var(--accent); margin-right: 8px; }
+  .win-body .hint { margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 12px; color: var(--faint); }
   .cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent); vertical-align: -2px; margin-left: 2px; animation: blink 1.1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
@@ -302,30 +308,32 @@
   <section class="hero">
     <div class="wrap">
       <span class="tag">We're cutlers · we fix bent flatware</span>
-      <h1>Straight tools.<br><span class="fade">Un-twisted software.</span></h1>
+      <h1>Your everyday tools,<br><span class="fade">straightened out.</span></h1>
       <p class="lede">
-        Simple software keeps getting <b>bent</b> — bloated, overengineered, locked
-        behind heavy paywalls. <b>CUTLR</b> is a growing suite of lightweight,
-        open-source alternatives. Just the core features, at what they should
-        actually cost. Every tool is <b>MIT-licensed</b> and speaks native
-        <b>MCP</b> — bring your own AI and it works out of the box.
+        Notes, scheduling, to-dos, time, events, saved links — the simple apps you
+        already live in, <b>minus the bloat and the ballooning bills</b>. Open a link,
+        sign in once, and they just work. Nothing to install, nothing to set up.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="#suite">Explore the suite →</a>
-        <a class="btn" href="https://github.com/cutlr" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.7c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          MIT code
-        </a>
+        <a class="btn" href="#pricing">See the pricing →</a>
       </div>
+      <p class="cta-note">Free to start · the whole suite for <b>$2.99/mo</b> · cancel anytime, no lock-in.</p>
 
-      <div class="term" role="img" aria-label="Terminal: npx cutlr add notes tasks track, three tools ready, one account, $2.99/mo">
-        <div class="term-bar"><i></i><i></i><i></i><span>~ cutlr</span></div>
-        <div class="term-body">
-          <div><span class="p">$</span> npx cutlr add notes tasks track</div>
-          <div class="ok">✓ notes<span class="dim">   ready → notes.cutlr.xyz</span></div>
-          <div class="ok">✓ tasks<span class="dim">   ready → tasks.cutlr.xyz</span></div>
-          <div class="ok">✓ track<span class="dim">   ready → track.cutlr.xyz</span></div>
-          <div class="dim">one account · every tool · $2.99/mo<span class="cursor" aria-hidden="true"></span></div>
+      <div class="win" role="img" aria-label="A browser open at notes.cutlr.xyz showing a simple grocery note">
+        <div class="win-bar">
+          <i></i><i></i><i></i>
+          <span class="addr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            notes.cutlr.xyz
+          </span>
+        </div>
+        <div class="win-body">
+          <div class="note-title">📝 Weekend</div>
+          <div class="note-line"><span class="mk">▸</span>book the trattoria for Saturday</div>
+          <div class="note-line done"><span class="mk">▸</span>oat milk, tomatoes, coffee</div>
+          <div class="note-line"><span class="mk">▸</span>call mum<span class="cursor" aria-hidden="true"></span></div>
+          <div class="hint">open a link · sign in once · start typing</div>
         </div>
       </div>
     </div>
@@ -359,7 +367,7 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="label">// <b>THE SUITE</b> — so far</span>
-        <h2>Six straight tools. One account.</h2>
+        <h2>One account. Every tool.</h2>
         <p>Sign in once at cutlr.xyz and you're in everywhere. New tools ship regularly — the suite keeps growing.</p>
       </div>
       <div class="grid">
@@ -367,7 +375,7 @@
         <a class="tool" href="https://notes.cutlr.xyz" target="_blank" rel="noopener">
           <div class="top"><span class="idx">[01]</span><span class="go">open ↗</span></div>
           <div class="name"><span class="em">📝</span> notes<span class="host">.cutlr.xyz</span></div>
-          <p>A clean, minimal canvas for your thoughts. Fully promptable through native MCP.</p>
+          <p>A clean, minimal canvas for your thoughts. Just start typing — or ask your AI to jot one down.</p>
         </a>
 
         <a class="tool" href="https://tasks.cutlr.xyz" target="_blank" rel="noopener">
@@ -394,10 +402,10 @@
           <p>An event page and a guest list. No ticketing fees, no platform tax on getting people in a room.</p>
         </a>
 
-        <a class="tool" href="https://bookmarks.cutlr.xyz" target="_blank" rel="noopener">
+        <a class="tool" href="https://pins.cutlr.xyz" target="_blank" rel="noopener">
           <div class="top"><span class="idx">[06]</span><span class="go">open ↗</span></div>
-          <div class="name"><span class="em">🔖</span> bookmarks<span class="host">.cutlr.xyz</span></div>
-          <p>Save a link, tag it, find it again. Your reading list — not an algorithm's.</p>
+          <div class="name"><span class="em">📌</span> pins<span class="host">.cutlr.xyz</span></div>
+          <p>Pin a link, tag it, find it again. Your reading list — not an algorithm's.</p>
         </a>
 
       </div>
@@ -409,17 +417,11 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="label">// <b>PRICING &amp; ACCESS</b> — kept honest</span>
-        <h2>Fair price. No lock-in.</h2>
-        <p>Self-hosted is always free — clone the code and run it anywhere, forever. Prefer our cloud? Here's the whole menu, no asterisks.</p>
+        <h2>One small price. Everything.</h2>
+        <p>One login, every tool included — instead of a drawer full of separate subscriptions. No per-app fees, no annual trap. (Rather run it yourself? That's free, forever.)</p>
       </div>
 
       <div class="ledger">
-        <div class="row">
-          <span class="tier">Self-hosted<span class="accent">run it yourself</span></span>
-          <span class="leader"></span>
-          <span class="desc">Clone the MIT code, host anywhere, forever.</span>
-          <span class="price"><span class="accent">$0</span></span>
-        </div>
         <div class="row">
           <span class="tier">Essentials<span class="accent">hosted by us</span></span>
           <span class="leader"></span>
@@ -431,6 +433,12 @@
           <span class="leader"></span>
           <span class="desc">Every tool, no limits, all included. That's it.</span>
           <span class="price"><span class="accent">$2.99</span>/mo</span>
+        </div>
+        <div class="row">
+          <span class="tier">Self-hosted<span class="accent">run it yourself</span></span>
+          <span class="leader"></span>
+          <span class="desc">Host the open-source code anywhere, forever.</span>
+          <span class="price"><span class="accent">$0</span></span>
         </div>
       </div>
 
@@ -469,7 +477,7 @@
           <a href="https://track.cutlr.xyz" target="_blank" rel="noopener">track.cutlr.xyz</a>
           <a href="https://polls.cutlr.xyz" target="_blank" rel="noopener">polls.cutlr.xyz</a>
           <a href="https://rsvp.cutlr.xyz" target="_blank" rel="noopener">rsvp.cutlr.xyz</a>
-          <a href="https://bookmarks.cutlr.xyz" target="_blank" rel="noopener">bookmarks.cutlr.xyz</a>
+          <a href="https://pins.cutlr.xyz" target="_blank" rel="noopener">pins.cutlr.xyz</a>
         </div>
         <div class="foot-col">
           <h5>Open source</h5>
