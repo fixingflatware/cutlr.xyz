@@ -163,6 +163,32 @@ CUTLR becomes product #1; a dedicated Events product (Meetup/Eventbrite) will ow
 - [ ] **GitHub org rename** `cutlr` → `fixingflatware`: **UI-only** (no API); user does it,
       then update git remote + the `www` DNS CNAME target → `fixingflatware.github.io`.
 
+## Revision v1.5 — add `cal` (Calendly-equivalent) as the 6th tool (2026-07-10)
+
+**Context:** CUTLR gains a Calendly-shaped module — the host **publishes availability**,
+an invitee **books a slot** — distinct from `polls` (Doodle-shaped: a group *votes* for a
+common time). Name **decided: `cal`**, drawn from the category's shared root (Calendly /
+Cal.com / SavvyCal). This revision is **site-only**; the app's own devplan/scoping (roadmap
+wave, external-calendar sync) is handled separately by the user.
+
+Tool identity on the site: **🗓️ `cal` · `cal.cutlr.xyz`** (emoji 🗓️ to contrast `polls`' 📅).
+
+**Decisions (user 2026-07-10):** label = **`Take bookings`** (host-voice, matches sibling
+chips); placement = **after `polls`** (scheduling tools grouped, `pins`→`[06]`); bonus
+`events`/`bookings` fixes = **yes**.
+
+- [x] **Hero suite strip** (function, not name): inserted `🗓️ Take bookings` after
+      `📅 Find a time` → Write notes · Track to-dos · Log time · Find a time · **Take bookings** · Save links.
+- [x] **The Suite grid**: `cal` card added **after `polls`**, `pins` renumbered `[06]`. Grid is a clean 2×3.
+      Copy (parallel to `polls`, **no external-sync promise** — sync is still an open app-side question):
+      *"Post your open hours, share the link, let people book a slot — no back-and-forth. Or let your AI take the bookings."*
+- [x] **Footer Tools column**: `cal.cutlr.xyz` added after `polls.cutlr.xyz`.
+- [x] **Bonus fixes**: hero lede prose — dropped stale **`events`**, added **`bookings`**;
+      added `bookings` to `<meta name="description">`. Bloat-tax `~€12/mo` "scheduling tool"
+      row left as-is (already stands in for Calendly).
+- [ ] **Verify & ship**: `./dev.sh`, both themes, no horizontal scroll, all 6 links resolve;
+      commit + push (Pages auto-deploys). — *edits done; preview/commit pending user.*
+
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
 artwork beyond a simple inline SVG. Flag if you want any pulled in.
