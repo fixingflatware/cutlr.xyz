@@ -226,6 +226,23 @@ row in THE MATH (invented figure, and it moves the ≈€36 anchor); req/min num
 or hero — the v1 decision above (l.121) keeps that language out of the mainstream-facing blocks,
 so the precise figures live in the FAQ.
 
+## Revision v1.7 — the pricing ledger keeps its descriptions on mobile (2026-08-06) ✅
+
+**Why:** `.ledger .desc` was `display: none` under 620px, so on a phone the pricing block read
+"Essentials / hosted by us / free" with no statement of what the free plan covers — exactly the
+sentence v1.6 corrected. v1.6 recorded this as needing a stacked-layout redesign; that was an
+overestimate. The leader already has `flex: 1`, so enabling wrap keeps line one (tier · dots ·
+price) identical and drops the description onto its own full-width line.
+
+- [x] `public/index.html`: replace `display: none` with `flex-wrap: wrap` on `.row` +
+      `flex-basis: 100%` on `.desc`; row-gap 4px, column-gap 10px
+- [x] Render check at 390px and 1280px. **The two-declaration version was not enough** — the
+      first render left the dotted leader trailing off line one with nothing to lead to, and
+      pushed the price onto a third line, because DOM order puts `.desc` before `.price`. Fixed
+      with `.leader { display: none }`, `.price { margin-left: auto }`, `.desc { order: 1 }`, so
+      mobile reads: tier + price on line one, category label, description. Desktop untouched.
+- [x] Commit + push
+
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
 artwork beyond a simple inline SVG. Flag if you want any pulled in.

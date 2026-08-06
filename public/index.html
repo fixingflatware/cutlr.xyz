@@ -237,8 +237,10 @@
   .ledger .price { font-size: 16px; font-weight: 600; white-space: nowrap; }
   .ledger .price .accent { color: var(--accent); }
   @media (max-width: 620px) {
-    .ledger .desc { display: none; }
-    .ledger .row { gap: 10px; }
+    .ledger .row { flex-wrap: wrap; gap: 4px 10px; }
+    .ledger .leader { display: none; }
+    .ledger .price { margin-left: auto; }
+    .ledger .desc { flex-basis: 100%; order: 1; }
   }
 
   .lockin { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
