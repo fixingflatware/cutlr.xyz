@@ -186,8 +186,45 @@ chips); placement = **after `polls`** (scheduling tools grouped, `pins`→`[06]`
 - [x] **Bonus fixes**: hero lede prose — dropped stale **`events`**, added **`bookings`**;
       added `bookings` to `<meta name="description">`. Bloat-tax `~€12/mo` "scheduling tool"
       row left as-is (already stands in for Calendly).
-- [ ] **Verify & ship**: `./dev.sh`, both themes, no horizontal scroll, all 6 links resolve;
-      commit + push (Pages auto-deploys). — *edits done; preview/commit pending user.*
+- [x] **Verify & ship**: `./dev.sh`, both themes, no horizontal scroll, all 6 links resolve;
+      commit + push (Pages auto-deploys). — *shipped in `b074530`; box closed 2026-08-06 after
+      verifying the `cal` card is live and `main` is level with `origin/main`. The work landed
+      2026-07-11 and the tick sat open for 26 days.*
+
+## Revision v1.6 — the AI costs nothing extra, and say what each plan gets (2026-08-06) ✅
+
+**Why:** the manifesto chip promises "Native MCP — bring your own AI" and the suite copy says
+"let your AI take the bookings", but the page never says what that AI costs. The FAQ carries six
+business-model questions and none about AI. Mirrors fixingflatware v1.3 (`dd312dd`), which states
+the argument; here it lands as a product fact — umbrella argues, cutlr prices.
+
+**Levels, from the locked plan (`software/cutlr/ARCHITECTURE.md` §Billing, §API & MCP):**
+Free = full API/MCP at 20 req/min per token · Power User = unmetered (fair use) · self-hosted =
+your server. Principle: "gate throughput, never access". No credits, no metering as a billing
+dimension ("protection, not pricing").
+
+- [x] FAQ: new entry "Do I pay extra for the AI?" before "Why is it so cheap?", carrying the
+      three levels and "we don't resell you tokens — you pay your model provider at their price"
+- [x] Pricing, "One fair monthly price" card: + "MCP on every plan — no AI tier, no credits"
+- [x] Pricing ledger, Essentials row: "The basics of every tool" contradicts the locked plan
+      ("plans never differ on item counts"; free is the full suite, gated on throughput only)
+      → "The whole suite on our cloud, AI access included."
+- [x] Render check at 1280px and 390px (preview copy with every `<details>` forced open, so the
+      new FAQ answer was actually inspected, not assumed). Ledger leader dots still resolve;
+      "One fair monthly price" goes from 3 to 4 lines and the three `.lockin` cards equalise.
+- [x] Commit + push
+
+**Limitation found on the render check:** `.ledger .desc` is `display: none` under 720px, so the
+Essentials correction is desktop-only — on mobile that row reads "Essentials / hosted by us /
+free" with no scope statement. Not a regression (pre-existing CSS) and the new FAQ answer covers
+it ("the free plan gets all of it"), but the pricing block itself stays silent there. Deferred:
+if the free plan's scope is worth stating on mobile, the ledger needs a stacked layout, which is
+a redesign of the block, not a copy edit.
+
+**Not doing:** a 4th `.lockin` card (grid is `repeat(3,1fr)`, leaves an orphan); an "AI add-on"
+row in THE MATH (invented figure, and it moves the ≈€36 anchor); req/min numbers in the ledger
+or hero — the v1 decision above (l.121) keeps that language out of the mainstream-facing blocks,
+so the precise figures live in the FAQ.
 
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
