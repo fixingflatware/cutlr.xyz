@@ -246,3 +246,70 @@ price) identical and drops the description onto its own full-width line.
 ### Out of scope (v1)
 Actual per-tool apps (notes/tasks/…), auth/SSO ("one account"), analytics, favicon
 artwork beyond a simple inline SVG. Flag if you want any pulled in.
+
+## Revision v1.8 — Next up / On the bench in the tools section (2026-09-08)
+
+**Trigger:** the app's build order was revised on 2026-09-08
+(`software/cutlr/devplan/README.md`): the launch suite is **Notes + Polls**, Cal is the
+first release after it, Tasks/Track/Pins follow. The page still shows six tools in one
+flat grid, each an `<a>` to a subdomain that does not resolve, under a head that reads
+"THE SUITE — so far". Zero of the six exist today. It is the defect the umbrella fixed in
+its v1.5 (1 live against 6 coming-soon, weakening principle [06] "Honest by default"),
+one step worse, and it takes the same fix and the same vocabulary.
+
+**Scope call:** this revision covers the **tools section and the footer link list**. The
+hero, the header CTAs and the pricing block make the same claim in other places; see the
+open decision at the end.
+
+**Decisions:**
+- Vocabulary mirrors the umbrella: `// NEXT UP` and `// ON THE BENCH`. No third "live"
+  tier, because nothing is live.
+- **Next up = notes, polls** — full cards keeping the existing `.tool` shape and copy, but
+  as `<div>` instead of `<a>`: a card that cannot be opened must not look like a link. The
+  hover "open ↗" becomes a static `building` chip.
+- **Bench = cal, tasks, track, pins** — compact `.bench-item` cards ported from the
+  umbrella (name + one-line qualifier, no paragraph). Order is the real build order, and
+  cal's qualifier carries its position ("first after launch") instead of hiding it.
+- The `[01]…[06]` indices go. They encode a flat sequence that no longer describes
+  anything; the two groups now carry the ordering.
+- Section sub-line rewritten: "Sign in once at cutlr.xyz and you're in everywhere"
+  describes a product you can sign into today.
+- Footer "Tools" column: six links to dead hosts become plain text with `— soon`,
+  matching the umbrella footer's treatment.
+- Copy for the four benched tools stays in git (umbrella v1.5 precedent) and returns when
+  one is promoted.
+
+**Tasks:**
+- [x] CSS: port `.bench` / `.bench-item` into the existing Cold Steel tokens; add the `building` chip
+- [x] Tools section: `// NEXT UP` group — notes + polls as non-link cards
+- [x] Tools section: `// ON THE BENCH` group — cal, tasks, track, pins as compact items
+- [x] Drop the `[0n]` indices; rewrite the section sub-line
+- [x] Footer Tools column → plain text + `— soon`
+- [x] `<meta name="description">` lists all six tools as if shipped — reword to the launch pair plus what follows
+- [x] Render check at 1280px and 390px, no horizontal scroll — headless Chromium, suite section isolated so it renders legibly. Desktop: two full cards side by side with `BUILDING` chips, four bench cells in one row, build-order note under them. Mobile: cards stack single-column, bench falls to 2×2, "time, no timesheets" wraps to two lines in its cell (same behaviour the umbrella accepted for its longest name). No horizontal scroll at either width. *Note for the next render check: `--virtual-time-budget` makes headless Chromium hang in this environment, and a page with a Google Fonts `<link>` stalls unless the link is stripped from the check copy — this page uses system stacks, so it renders as-is with `--host-resolver-rules="MAP * ~NOTFOUND"`.*
+- [x] Commit + push (Pages auto-deploys)
+
+**Open decision — the rest of the page makes the same claim.** The hero says "Open a link,
+sign in once, and they just work"; the header carries **Log in** and **Start for free**
+pointing at `https://www.cutlr.xyz/{login,signup}`, placeholders since v1.2 that 404
+today; the hero strip lists all six functions as chips; the pricing block sells €2.99/mo
+for a subscription nobody can buy yet. Splitting only the grid leaves the page
+contradicting itself two screens higher.
+
+- **(a) Grid only.** Ship the tasks above, leave the marketing posture untouched. The page
+  goes on sending visitors to a 404.
+- **(b) Pre-launch posture (recommended).** (a) plus: hero lede states that the suite is
+  being built and what lands first; the two CTAs collapse into one honest action (follow
+  the build on GitHub), since a notify-me form needs a backend that does not exist; the
+  pricing block keeps its numbers under a "when we launch" line.
+
+**Resolved (2026-09-08): (a), grid only.** Founder call — the site carries no real audience
+yet and everything will exist by the time it does, so the hero, the header CTAs and the
+pricing block stay exactly as written. (b) is not scheduled; the `/login` and `/signup`
+placeholders stay as the v1.2 note already records, and get repointed when auth exists.
+
+**As built:** the six `<a class="tool">` cards became two non-link `.tool` cards under
+`// NEXT UP` and four `.bench-item` cells under `// ON THE BENCH`, in build order with cal
+first. `.tool:hover` was narrowed to `a.tool:hover` so a card that cannot be opened no
+longer lights up under the cursor. The `[0n]` indices are gone, the section label reads
+`// THE SUITE — in build`, and the footer's six dead links are plain text with `— soon`.

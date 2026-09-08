@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CUTLR — lightweight, un-twisted tools. Keep it straight.</title>
-<meta name="description" content="CUTLR is a growing suite of simple, honestly-priced everyday apps — notes, to-dos, time tracking, scheduling, bookings and saved links. One login, every tool, €2.99/mo. No lock-in.">
+<meta name="description" content="CUTLR is a growing suite of simple, honestly-priced everyday apps. Notes and polls first, then bookings, to-dos, time tracking and saved links. One login, every tool, €2.99/mo. No lock-in.">
 <meta name="theme-color" content="#0B0D0E" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
@@ -212,15 +212,28 @@
     display: flex; flex-direction: column; gap: 10px;
     transition: background .15s var(--ease);
   }
-  .tool:hover { background: var(--surface-2); }
+  a.tool:hover { background: var(--surface-2); }
   .tool .top { display: flex; align-items: center; justify-content: space-between; }
   .tool .idx { font-family: var(--font-mono); font-size: 12px; color: var(--faint); letter-spacing: .1em; }
   .tool .go { font-family: var(--font-mono); font-size: 12px; color: var(--faint); opacity: 0; transition: opacity .15s var(--ease); }
-  .tool:hover .go { opacity: 1; color: var(--accent); }
+  a.tool:hover .go { opacity: 1; color: var(--accent); }
   .tool .name { font-family: var(--font-mono); font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 9px; }
   .tool .name .em { font-size: 17px; }
   .tool .name .host { color: var(--accent); }
   .tool p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+  .tool .state { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--border-2); border-radius: 999px; padding: 2px 10px; }
+  .grid.pair { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 560px) { .grid.pair { grid-template-columns: 1fr; } }
+  /* Build-order groups: what is being built now vs what waits its turn */
+  .group-head { margin: 0 0 14px; }
+  .group-head.later { margin-top: 34px; }
+  .bench { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  @media (max-width: 720px) { .bench { grid-template-columns: repeat(2, 1fr); } }
+  .bench-item { background: var(--surface); padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .bench-item .em { font-size: 19px; }
+  .bench-item .name { font-family: var(--font-mono); font-size: 15px; font-weight: 600; display: flex; flex-direction: column; gap: 3px; }
+  .bench-item .fn { color: var(--muted); font-weight: 400; font-size: 12.5px; }
+  .bench-note { color: var(--faint); font-size: 13.5px; margin: 18px 0 0; max-width: 620px; }
 
   /* Pricing ledger */
   .ledger {
@@ -259,6 +272,7 @@
   .foot-col h5 { margin: 0 0 12px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
   .foot-col a { display: block; color: var(--muted); font-size: 14px; padding: 3px 0; font-family: var(--font-mono); transition: color .15s var(--ease); }
   .foot-col a:hover { color: var(--accent); }
+  .foot-col span { display: block; color: var(--faint); font-size: 14px; padding: 3px 0; font-family: var(--font-mono); }
   .foot-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--faint); font-family: var(--font-mono); font-size: 12.5px; }
   .foot-bottom a { color: var(--muted); }
   .foot-bottom a:hover { color: var(--accent); }
@@ -396,49 +410,36 @@
   <section class="block" id="suite">
     <div class="wrap">
       <div class="sec-head">
-        <span class="label">// <b>THE SUITE</b> — so far</span>
+        <span class="label">// <b>THE SUITE</b> — in build</span>
         <h2>One account. Every tool.</h2>
-        <p>Sign in once at cutlr.xyz and you're in everywhere. New tools ship regularly — the suite keeps growing.</p>
+        <p>One login covers all of them. Notes and polls are being built first; the rest follow, one at a time.</p>
       </div>
-      <div class="grid">
 
-        <a class="tool" href="https://notes.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[01]</span><span class="go">open ↗</span></div>
+      <div class="group-head"><span class="label">// <b>NEXT UP</b></span></div>
+      <div class="grid pair">
+
+        <div class="tool">
+          <div class="top"><span class="state">building</span></div>
           <div class="name"><span class="em">📝</span> notes<span class="host">.cutlr.xyz</span></div>
           <p>A clean, minimal canvas for your thoughts. Just start typing — or ask your AI to jot one down.</p>
-        </a>
+        </div>
 
-        <a class="tool" href="https://tasks.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[02]</span><span class="go">open ↗</span></div>
-          <div class="name"><span class="em">📋</span> tasks<span class="host">.cutlr.xyz</span></div>
-          <p>A straight to-do list. Add, check, done. Tell your AI "put it on my list" — it's there.</p>
-        </a>
-
-        <a class="tool" href="https://track.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[03]</span><span class="go">open ↗</span></div>
-          <div class="name"><span class="em">⏱️</span> track<span class="host">.cutlr.xyz</span></div>
-          <p>Time tracking without the timesheet theater. Start, stop, see where the hours went.</p>
-        </a>
-
-        <a class="tool" href="https://polls.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[04]</span><span class="go">open ↗</span></div>
+        <div class="tool">
+          <div class="top"><span class="state">building</span></div>
           <div class="name"><span class="em">📅</span> polls<span class="host">.cutlr.xyz</span></div>
           <p>Pick a few dates, share the link, find out when everyone's free. Or let your AI coordinate it.</p>
-        </a>
-
-        <a class="tool" href="https://cal.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[05]</span><span class="go">open ↗</span></div>
-          <div class="name"><span class="em">🗓️</span> cal<span class="host">.cutlr.xyz</span></div>
-          <p>Post your open hours, share the link, let people book a slot — no back-and-forth. Or let your AI take the bookings.</p>
-        </a>
-
-        <a class="tool" href="https://pins.cutlr.xyz" target="_blank" rel="noopener">
-          <div class="top"><span class="idx">[06]</span><span class="go">open ↗</span></div>
-          <div class="name"><span class="em">📌</span> pins<span class="host">.cutlr.xyz</span></div>
-          <p>Pin a link, tag it, find it again. Your reading list — not an algorithm's.</p>
-        </a>
+        </div>
 
       </div>
+
+      <div class="group-head later"><span class="label">// <b>ON THE BENCH</b></span></div>
+      <div class="bench">
+        <div class="bench-item"><span class="em">🗓️</span><div class="name">cal <span class="fn">booking pages</span></div></div>
+        <div class="bench-item"><span class="em">📋</span><div class="name">tasks <span class="fn">add, check, done</span></div></div>
+        <div class="bench-item"><span class="em">⏱️</span><div class="name">track <span class="fn">time, no timesheets</span></div></div>
+        <div class="bench-item"><span class="em">📌</span><div class="name">pins <span class="fn">saved links</span></div></div>
+      </div>
+      <p class="bench-note">Listed in build order: cal comes first after launch. Each one arrives on the same account, with the same API and the same MCP tools as the rest.</p>
     </div>
   </section>
 
@@ -584,12 +585,12 @@
       <div class="foot-cols">
         <div class="foot-col">
           <h5>Tools</h5>
-          <a href="https://notes.cutlr.xyz" target="_blank" rel="noopener">notes.cutlr.xyz</a>
-          <a href="https://tasks.cutlr.xyz" target="_blank" rel="noopener">tasks.cutlr.xyz</a>
-          <a href="https://track.cutlr.xyz" target="_blank" rel="noopener">track.cutlr.xyz</a>
-          <a href="https://polls.cutlr.xyz" target="_blank" rel="noopener">polls.cutlr.xyz</a>
-          <a href="https://cal.cutlr.xyz" target="_blank" rel="noopener">cal.cutlr.xyz</a>
-          <a href="https://pins.cutlr.xyz" target="_blank" rel="noopener">pins.cutlr.xyz</a>
+          <span>notes.cutlr.xyz — soon</span>
+          <span>polls.cutlr.xyz — soon</span>
+          <span>cal.cutlr.xyz — soon</span>
+          <span>tasks.cutlr.xyz — soon</span>
+          <span>track.cutlr.xyz — soon</span>
+          <span>pins.cutlr.xyz — soon</span>
         </div>
         <div class="foot-col">
           <h5>Open source</h5>
